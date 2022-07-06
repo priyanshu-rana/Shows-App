@@ -1,9 +1,14 @@
+import { Route, Routes } from "react-router-dom";
+import ShowDetails from "./components/ShowDetails";
 import ShowsList from "./components/ShowsList";
 
 function App() {
   return (
     <div>
-      <ShowsList />
+      <Routes>
+        <Route index element={<ShowsList />} />
+        <Route path="/shows/:showId" element={<ShowDetails />} />
+      </Routes>
     </div>
   );
 }

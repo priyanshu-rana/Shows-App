@@ -19,8 +19,13 @@ const ShowsList: FC<ShowsListProps> = ({ shows, fetchShows, query }) => {
   };
 
   return (
-    <div className="px-8 py-4 space-y-4">
-      <input placeholder="search" value={query} onChange={handleChange} />
+    <div className="px-8 py-4 space-y-4 relative">
+      <input
+        placeholder="search"
+        value={query}
+        onChange={handleChange}
+        className="border-blue-600 border-4 rounded-lg p-1 placeholder:text-xl"
+      />
       {shows.map((s) => (
         <ShowRow key={s.id} show={s} />
       ))}
