@@ -30,6 +30,11 @@ export const showsSelector = createSelector(
   (ids, entities) => ids.map((id) => entities[id])
 );
 
+export const showLoadingSelector = createSelector(
+  showStateSelector,
+  (showState) => showState.showLoading
+);
+
 // export const showsQuerySelector = (s: State) => s.shows.query;   better approch is to use createSelector
 
 // export const showsSelector = (s: State) => {
