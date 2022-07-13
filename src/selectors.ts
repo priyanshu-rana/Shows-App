@@ -1,7 +1,9 @@
 import { createSelector } from "reselect";
+import { Actor } from "./models/actor";
 import State from "./store";
 
 const showStateSelector = (s: State) => s.shows;
+const actorStateSelector = (s: State) => s.actors;
 
 export const showEntitiesSelector = createSelector(
   showStateSelector,
@@ -35,20 +37,32 @@ export const showLoadingSelector = createSelector(
   (showState) => showState.showLoading
 );
 
-// export const showsQuerySelector = (s: State) => s.shows.query;   better approch is to use createSelector
+export const queryLoadingSelector = createSelector(
+  showStateSelector,
+  (showState) => showState.queryLoading
+);
 
-// export const showsSelector = (s: State) => {
-//   const showIds = s.shows.againstQuery[s.shows.query] || [];
-//   return showIds.map((id) => s.shows.entities[id]);
-// };
+export const actorEntitiesSelector = createSelector(
+  actorStateSelector,
+  (actorState) => actorState.entities
+);
 
-// export const showsSelector = createSelector(
-//   showsAgainstQuerySelector,
-//   showsQuerySelector,
-//   showEntitiesSelector,
-//   (againstQuery, query, entities) => {
-//     const showIds = againstQuery[query];
+export const showActorIdsSelector = createSelector(
+  showStateSelector,
+  (showState) => showState.actors
+);
 
-//     return showIds.map((id) => entities[id]);
-//   }
-// );
+export const showActorsSelector = createSelector(
+  showActorIdsSelector,
+  actorEntitiesSelector,
+  (showActorIds, actorEntities) => {
+    return Object.keys(showActorIds).reduce<{ [id: number]: Actor[] }>(
+      (showActors, showId) => {
+        const actorIds = showActorIds[+showId];
+        const actors = actorIds.map((id) => actorEntities[id]);
+        return { ...showActors, [+showId]: actors };
+      },
+      {}
+    );
+  }
+);

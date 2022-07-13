@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Actor } from "./models/actor";
 import { Show } from "./models/Show";
 
 type ShowObj = {
@@ -20,3 +21,10 @@ export const getShowList = async (query: string) => {
   return response.data.map((d) => d.show);
 };
 //as data contain 2keys score and show , in this condition we need show , so, we use map here
+
+export const getShowCast = async (showId: number) => {
+  const response = await axios.get<{ person: Actor }[]>(
+    "https://api.tvmaze.com/shows/" + showId + "/cast"
+  );
+  return response.data;
+};
