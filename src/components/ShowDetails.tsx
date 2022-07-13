@@ -10,7 +10,7 @@ import {
   showLoadingSelector,
 } from "../selectors";
 import State from "../store";
-import ActorCard from "./actorCard";
+import ActorCard from "./ActorCard";
 import Spinner from "./Spinner";
 
 type ShowDetailsProps = {
@@ -36,10 +36,10 @@ const ShowDetails: FC<ShowDetailsProps> = ({
   }, []);
 
   return (
-    <div className="bg-black h-screen ">
+    <div className=" ">
       {loading && <Spinner />}
       {show && (
-        <div className="bg-black h-screen ">
+        <div className="">
           <div className="flex space-x-8 p-5  ">
             <div className="space-y-4 h-full ">
               <div className="w-40">
@@ -76,7 +76,7 @@ const ShowDetails: FC<ShowDetailsProps> = ({
               </div>
               <h1 className="font-bold text-gray-200">Cast :</h1>
               {actors && (
-                <div className="text-green-500 font-bold flex flex-wrap ">
+                <div className="text-green-500 font-bold flex flex-wrap px-8 ">
                   {actors.map((a) => (
                     <ActorCard actor={a} key={a.id}></ActorCard>
                   ))}
@@ -84,9 +84,6 @@ const ShowDetails: FC<ShowDetailsProps> = ({
               )}
             </div>
           </div>
-          <h1 className="text-red-500 absolute  bottom-0 right-0 bg-gray-800 p-1 m-2 rounded-lg">
-            Developed by- Priyanshu Rana
-          </h1>
         </div>
       )}
     </div>
