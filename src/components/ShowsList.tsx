@@ -29,6 +29,16 @@ const ShowsList: FC<ShowsListProps> = ({
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     fetchShows(event.target.value);
   };
+  if (query == "") {
+    loading = false;
+  }
+  // if (!fetchShows) {
+  //   return (
+  //     <div className="bg-yellow-500 absolute top-1/2 ">
+  //       <h1> No results matched!!!</h1>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
@@ -51,6 +61,13 @@ const ShowsList: FC<ShowsListProps> = ({
               ))}
             </div>
           </div>
+        )}
+      </div>
+      <div className="  flex items-center justify-center ">
+        {loading && (
+          <h1 className="text-sky-200 p-3 rounded-lg border-2 text-7xl font-bold   ">
+            Shows will be appear Here!
+          </h1>
         )}
       </div>
     </div>
