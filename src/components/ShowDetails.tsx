@@ -42,7 +42,7 @@ const ShowDetails: FC<ShowDetailsProps> = ({
         <div className="">
           <div className="flex space-x-8 p-5  ">
             <div className="space-y-4 h-full ">
-              <div className="w-40">
+              <div className="sm:w-60  ">
                 <img
                   className="  border-4 border-gray-500"
                   src={
@@ -68,7 +68,7 @@ const ShowDetails: FC<ShowDetailsProps> = ({
               </h1>
             </div>
             <div className="flex flex-col">
-              <div className="border-2 border-gray-400 w-full h-full p-3">
+              <div className="border-2 border-gray-400  p-3">
                 <h1 className="font-bold text-2xl text-gray-200">
                   {show.name}
                 </h1>

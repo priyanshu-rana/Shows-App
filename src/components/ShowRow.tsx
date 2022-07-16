@@ -32,7 +32,6 @@ const ShowRow: FC<ShowRowProps> = ({ show }) => {
           {show.genres.map((s) => (
             <div>{s}</div>
           ))}
-          {show.genres}
         </div>
       </h1>
     </div>
